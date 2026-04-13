@@ -1,18 +1,43 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
-
+// import 'dotenv/config'
+import dotenv from 'dotenv'
 import { defineConfig } from '#q-app/wrappers'
 import { fileURLToPath } from 'node:url'
+import path from 'node:path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+dotenv.config({
+  path: path.join(__dirname, '.env')
+})
+
 
 export default defineConfig((ctx) => {
   return {
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
-    // preFetch: true,
+    preFetch: true,
 
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: ['i18n'],
+    boot: [
+      "vueQuery",
+      "app",
+      "atropos",
+      // "bus",
+      // {
+      //   path: "gtag",
+      //   server: false,
+      // },
+      // "axios",
+      // "i18n",
+      "sanity",
+      "sanityUrlFor",
+      "swiper",
+      // "vueMotion",
+    ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
     css: ['app.scss'],
@@ -27,7 +52,7 @@ export default defineConfig((ctx) => {
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
-      'roboto-font', // optional, you are not bound to it
+      // 'roboto-font', // optional, you are not bound to it
       'material-icons', // optional, you are not bound to it
     ],
 
@@ -38,7 +63,7 @@ export default defineConfig((ctx) => {
         node: 'node22',
       },
 
-      vueRouterMode: 'hash', // available values: 'hash', 'history'
+      vueRouterMode: 'history', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -47,7 +72,12 @@ export default defineConfig((ctx) => {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        // SANITY_API_VERSION: process.env.SANITY_API_VERSION,
+        // SANITY_CLIENT_TOKEN: process.env.SANITY_CLIENT_TOKEN,
+        // SANITY_DATASET: process.env.SANITY_DATASET,
+        // SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
@@ -56,6 +86,23 @@ export default defineConfig((ctx) => {
 
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
+      extendViteConf(viteConf) {
+        viteConf.build = viteConf.build || {};
+        viteConf.build.sourcemap = true;
+        viteConf.optimizeDeps.exclude = ["@tanstack/vue-query"];
+        if (viteConf.ssr) {
+          viteConf.ssr.noExternal.push("atropos");
+          viteConf.ssr.noExternal.push("swiper");
+        }
+      },
+      viteVuePluginOptions: {
+        template: {
+          compilerOptions: {
+            isCustomElement: (tag) =>
+              ["swiper-container", "swiper-slide"].includes(tag),
+          },
+        },
+      },
 
       vitePlugins: [
         [
@@ -95,7 +142,21 @@ export default defineConfig((ctx) => {
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#framework
     framework: {
-      config: {},
+      config: {
+        dark: true,
+        loadingBar: {
+          color: "primary",
+          position: "bottom",
+          size: "6px",
+        },
+        notify: {
+          color: "primary",
+          position: "center",
+          progress: true,
+          textColor: "dark",
+          timeout: 2000,
+        },
+      },
 
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
@@ -108,12 +169,12 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: [],
+      plugins: ["Dialog", "LoadingBar", "Meta", "Notify"],
     },
 
     // animations: 'all', // --- includes all animations
     // https://v2.quasar.dev/options/animations
-    animations: [],
+    animations: "all",
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#sourcefiles
     // sourceFiles: {
@@ -204,7 +265,7 @@ export default defineConfig((ctx) => {
       builder: {
         // https://www.electron.build/configuration
 
-        appId: 'cq-new',
+        appId: 'cq',
       },
     },
 
