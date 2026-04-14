@@ -1,7 +1,7 @@
 <template>
     <q-layout view="hhh lpR fFf" container>
         <q-header>
-            <div class="q-pa-md">Christopher Quezada is a multi-disciplinary storyteller that lifts people and brands as a Writer, Producer, Director, Editor, Brand Designer, Experience Designer, UI/UX Designer, Full-Stack Developer, and Educator.</div>
+            <div class="q-pa-md">Chris Quezada is a multi-disciplinary storyteller that lifts people and brands as a Writer, Producer, Director, Editor, Brand Designer, Experience Designer, UI/UX Designer, Full-Stack Developer, Educator, and Scratch Baker.</div>
             <q-tabs
                 v-model="tab"
                 active-color="white"
@@ -66,7 +66,7 @@ const revealed = ref(false);
 const email = ref('');
 const tab = ref("cv");
 function revealEmail () {
-  email.value = ['usemarkers', '@', 'gmail.com'].join('')
+  email.value = ['chris', '@', '1b4pi.com'].join('')
   revealed.value = true
 }
 </script>

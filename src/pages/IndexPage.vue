@@ -89,7 +89,7 @@ const scrollToElement = (id) => {
 
 const metaCardBackup = "/card.jpg";
 const metaDescription = ref(
-  "I am a multi-disciplinary storyteller that lifts people and brands as a Producer, Writer, Director, Editor, Experience Designer, UI/UX Designer, Full-Stack Developer, Educator, and Brand Designer."
+  "Chris Quezada is a multi-disciplinary storyteller that lifts people and brands as a Writer, Producer, Director, Editor, Brand Designer, Experience Designer, UI/UX Designer, Full-Stack Developer, Educator, and Scratch Baker."
 );
 const metaImage = computed(() => {
   let image = metaCardBackup;
