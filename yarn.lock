@@ -5092,6 +5092,11 @@ vue-eslint-parser@^10.4.0:
     esquery "^1.6.0"
     semver "^7.6.3"
 
+vue-gtag@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/vue-gtag/-/vue-gtag-3.7.0.tgz#18031fb505b364ac44773e961f7c92b63d66682c"
+  integrity sha512-o/ng/NjiVgEnOBZlSnWyg9IsVzIXUWmSuwbd+lGRX/T/h8gxdYN1IMcz5MT8e7o6GYhextvWpsupVAsWbYb+Gg==
+
 vue-i18n@^10.0.0:
   version "10.0.8"
   resolved "https://registry.yarnpkg.com/vue-i18n/-/vue-i18n-10.0.8.tgz#adce21f875b29589c8bd602eb28b5c6ad2d85c97"
