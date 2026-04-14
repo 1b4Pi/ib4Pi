@@ -27,10 +27,10 @@ export default defineConfig((ctx) => {
       "app",
       "atropos",
       // "bus",
-      {
-        path: "gtag",
-        server: false,
-      },
+      // {
+      //   path: "gtag",
+      //   server: false,
+      // },
       // "axios",
       // "i18n",
       "sanity",
