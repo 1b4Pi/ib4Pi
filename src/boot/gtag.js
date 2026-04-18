@@ -3,10 +3,10 @@ import { createGtag } from 'vue-gtag'
 
 export default defineBoot(({ app, router }) => {
   const gtag = createGtag({
-    tagId: 'G-D644CSN7TQ',
+    tagId: 'G-J804FB6D1E',
     pageTracker: {
-      router
-    }
+      router,
+    },
   })
 
   app.use(gtag)
