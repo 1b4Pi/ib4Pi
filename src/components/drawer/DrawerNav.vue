@@ -8,7 +8,7 @@
       <q-btn
         color="primary"
         dense
-        :icon="drawer ? 'chevron_right' : 'menu'"
+        :icon="drawer ? 'chevron_right  ' : 'menu'"
         :size="`${$q.screen.lt.md ? 'md' : '18px'}`"
         square
         unelevated

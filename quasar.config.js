@@ -10,9 +10,8 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 dotenv.config({
-  path: path.join(__dirname, '.env')
+  path: path.join(__dirname, '.env'),
 })
-
 
 export default defineConfig((ctx) => {
   return {
@@ -23,19 +22,19 @@ export default defineConfig((ctx) => {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
-      "vueQuery",
-      "app",
-      "atropos",
+      'vueQuery',
+      'app',
+      'atropos',
       // "bus",
       {
-        path: "gtag",
+        path: 'gtag-new',
         server: false,
       },
       // "axios",
       // "i18n",
-      "sanity",
-      "sanityUrlFor",
-      "swiper",
+      'sanity',
+      'sanityUrlFor',
+      'swiper',
       // "vueMotion",
     ],
 
@@ -87,19 +86,18 @@ export default defineConfig((ctx) => {
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
       extendViteConf(viteConf) {
-        viteConf.build = viteConf.build || {};
-        viteConf.build.sourcemap = true;
-        viteConf.optimizeDeps.exclude = ["@tanstack/vue-query"];
+        viteConf.build = viteConf.build || {}
+        viteConf.build.sourcemap = true
+        viteConf.optimizeDeps.exclude = ['@tanstack/vue-query']
         if (viteConf.ssr) {
-          viteConf.ssr.noExternal.push("atropos");
-          viteConf.ssr.noExternal.push("swiper");
+          viteConf.ssr.noExternal.push('atropos')
+          viteConf.ssr.noExternal.push('swiper')
         }
       },
       viteVuePluginOptions: {
         template: {
           compilerOptions: {
-            isCustomElement: (tag) =>
-              ["swiper-container", "swiper-slide"].includes(tag),
+            isCustomElement: (tag) => ['swiper-container', 'swiper-slide'].includes(tag),
           },
         },
       },
@@ -145,15 +143,15 @@ export default defineConfig((ctx) => {
       config: {
         dark: true,
         loadingBar: {
-          color: "primary",
-          position: "bottom",
-          size: "6px",
+          color: 'primary',
+          position: 'bottom',
+          size: '6px',
         },
         notify: {
-          color: "primary",
-          position: "center",
+          color: 'primary',
+          position: 'center',
           progress: true,
-          textColor: "dark",
+          textColor: 'dark',
           timeout: 2000,
         },
       },
@@ -169,12 +167,12 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: ["Dialog", "LoadingBar", "Meta", "Notify"],
+      plugins: ['Dialog', 'LoadingBar', 'Meta', 'Notify'],
     },
 
     // animations: 'all', // --- includes all animations
     // https://v2.quasar.dev/options/animations
-    animations: "all",
+    animations: 'all',
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#sourcefiles
     // sourceFiles: {
