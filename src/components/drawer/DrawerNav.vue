@@ -1,32 +1,31 @@
 <template>
-    <q-page-sticky
+  <q-page-sticky
     position="top-right"
     :offset="$q.screen.lt.md ? [16, 16] : [8, 8]"
     @click="onClick()"
   >
-  <div>
-    <q-btn
+    <div>
+      <q-btn
         color="primary"
         dense
-        :icon="drawer ? 'close' : 'menu'"
+        :icon="drawer ? 'chevron_right' : 'menu'"
         :size="`${$q.screen.lt.md ? 'md' : '18px'}`"
         square
         unelevated
-    />
-  </div>
+      />
+    </div>
   </q-page-sticky>
 </template>
 <script setup>
-import { storeToRefs } from "pinia";
-import { useAppStore } from "src/stores/app";
+import { storeToRefs } from 'pinia'
+import { useAppStore } from 'src/stores/app'
 
-defineOptions({ name: "DrawerNav" });
+defineOptions({ name: 'DrawerNav' })
 
-const appStore = useAppStore();
-const { drawer } = storeToRefs(appStore);
+const appStore = useAppStore()
+const { drawer } = storeToRefs(appStore)
 
 const onClick = () => {
-  drawer.value = !drawer.value;
+  drawer.value = !drawer.value
 }
-
 </script>

@@ -5,13 +5,13 @@ const routes = [
     children: [{ path: '', component: () => import('pages/IndexPage.vue') }],
   },
   {
-    path: "/:section",
-    component: () => import("layouts/MainLayout.vue"),
+    path: '/:section',
+    component: () => import('layouts/MainLayout.vue'),
     children: [
       {
-        path: "",
-        name: "section",
-        component: () => import("pages/IndexPage.vue"),
+        path: '',
+        name: 'section',
+        component: () => import('pages/IndexPage.vue'),
       },
     ],
   },
