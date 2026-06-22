@@ -27,7 +27,7 @@ export default defineConfig((ctx) => {
       'atropos',
       // "bus",
       {
-        path: 'gtag-new',
+        path: 'gtag',
         server: false,
       },
       // "axios",
