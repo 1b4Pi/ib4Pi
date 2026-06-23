@@ -24,7 +24,6 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { useQuasar } from 'quasar'
 import { Autoplay, EffectFade } from 'src/boot/swiper'
-// import fadeStyles from 'swiper/element/css/effect-fade?inline'
 import ImageComponent from 'src/components/image/ImageComponent.vue'
 import VideoComponent from 'src/components/video/VideoComponent.vue'
 
@@ -59,7 +58,7 @@ const params = {
     crossFade: true,
   },
   grabCursor: false,
-  injectStylesUrls: ['/css/fade-element.scss'],
+  injectStylesUrls: ['/css/fade-element.css'],
   loop: true,
   materialEffect: {
     slideSplitRatio: 0.65,
@@ -89,7 +88,7 @@ watch(
   () => props.active,
   async (active) => {
     if (!swiper.value) return
-    if (active || props.hover) {
+    if (active) {
       swiper.value.swiper.autoplay.start()
     } else {
       swiper.value.swiper.autoplay.stop()
@@ -102,7 +101,7 @@ watch(
   async (hover) => {
     if ($q.platform.is.mobile) return
     if (!swiper.value) return
-    if (props.active || hover) {
+    if (hover) {
       swiper.value.swiper.autoplay.start()
     } else {
       swiper.value.swiper.autoplay.stop()
