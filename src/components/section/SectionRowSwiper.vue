@@ -47,7 +47,11 @@ const style = computed(() => {
 })
 
 const params = {
-  autoplay: props.active,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+    waitForTransition: false,
+  },
   centeredSlides: true,
   effect: 'fade',
   fadeEffect: {
@@ -71,6 +75,11 @@ onMounted(() => {
   nextTick(() => {
     if (swiper.value) {
       swiper.value.initialize()
+      if (props.active) {
+        swiper.value.swiper.autoplay.start()
+      } else {
+        swiper.value.swiper.autoplay.stop()
+      }
     }
   })
 })
