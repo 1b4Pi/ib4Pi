@@ -88,7 +88,7 @@ watch(
   () => props.active,
   async (active) => {
     if (!swiper.value) return
-    if (active) {
+    if (active || props.hover) {
       swiper.value.swiper.autoplay.start()
     } else {
       swiper.value.swiper.autoplay.stop()
@@ -101,7 +101,7 @@ watch(
   async (hover) => {
     if ($q.platform.is.mobile) return
     if (!swiper.value) return
-    if (hover) {
+    if (props.active || hover) {
       swiper.value.swiper.autoplay.start()
     } else {
       swiper.value.swiper.autoplay.stop()
