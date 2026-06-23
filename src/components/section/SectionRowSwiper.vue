@@ -13,12 +13,7 @@
         :key="slide._key"
         :style="style"
       >
-        <image-component
-          v-if="slide.type === 'image'"
-          crop
-          :image="slide.image"
-          :width="computedWidth"
-        />
+        <image-component v-if="slide.type === 'image'" crop :image="slide.image" :width="width" />
         <video-component v-else :src="slide.videoUrl" />
       </swiper-slide>
     </swiper-container>
@@ -44,13 +39,10 @@ const props = defineProps({
 
 const $q = useQuasar()
 const swiper = ref(null)
-const computedActive = computed(() => props.active)
-const computedHover = computed(() => props.hover)
-const computedWidth = computed(() => props.width)
 const style = computed(() => {
   return {
-    height: `calc(${computedWidth.value}px / ${props.ratio})`,
-    width: `${computedWidth.value}px`,
+    height: `calc(${props.width}px / ${props.ratio})`,
+    width: `${props.width}px`,
   }
 })
 
@@ -72,7 +64,6 @@ const params = {
   slidesPerView: 1,
   simulateTouch: false,
   spaceBetween: 0,
-  // speed: 200,
 }
 
 onMounted(() => {
@@ -84,23 +75,28 @@ onMounted(() => {
   })
 })
 
-watch(computedActive, (isActive) => {
-  if (!swiper.value) return
-  if (isActive) {
-    swiper.value.swiper.autoplay.start()
-  }
-  // else {
-  //   swiper.value.swiper.autoplay.stop()
-  // }
-})
+watch(
+  () => props.active,
+  async (active) => {
+    if (!swiper.value) return
+    if (active) {
+      swiper.value.swiper.autoplay.start()
+    } else {
+      swiper.value.swiper.autoplay.stop()
+    }
+  },
+)
 
-watch(computedHover, (isHovering) => {
-  if ($q.platform.is.mobile) return
-  if (!swiper.value) return
-  if (isHovering) {
-    swiper.value.swiper.autoplay.start()
-  } else {
-    swiper.value.swiper.autoplay.stop()
-  }
-})
+watch(
+  () => props.hover,
+  async (hover) => {
+    if ($q.platform.is.mobile) return
+    if (!swiper.value) return
+    if (hover) {
+      swiper.value.swiper.autoplay.start()
+    } else {
+      swiper.value.swiper.autoplay.stop()
+    }
+  },
+)
 </script>
