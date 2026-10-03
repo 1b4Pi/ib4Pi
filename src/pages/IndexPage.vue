@@ -25,8 +25,8 @@
         </div>
       </template>
     </q-scroll-area>
-    <q-dialog v-model="about">
-      <q-card>
+    <q-dialog v-model="about" backdrop-filter="blur(4px) saturate(150%)">
+      <q-card class="bg-primary">
         <q-card-section class="row items-center q-pb-none">
           <div class="text-h6">About</div>
           <q-space />
@@ -38,8 +38,8 @@
         </q-card-section>
       </q-card>
     </q-dialog>
-    <q-dialog v-model="contact">
-      <q-card>
+    <q-dialog v-model="contact" backdrop-filter="blur(4px) saturate(150%)">
+      <q-card class="bg-primary">
         <q-card-section class="row items-center q-pb-none">
           <div class="text-h6">Contact</div>
           <q-space />
