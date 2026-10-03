@@ -1,12 +1,12 @@
-import { ref } from "vue";
-import { defineStore } from "pinia";
+import { ref } from 'vue'
+import { defineStore } from 'pinia'
 
-export const useVideoStore = defineStore("video", () => {
-  const isPlaying = ref({});
-  const muted = ref(true);
-  const play = ref({});
-  const playPause = ref(true);
-  const volume = ref(1);
+export const useVideoStore = defineStore('video', () => {
+  const isPlaying = ref({})
+  const muted = ref(true)
+  const play = ref({})
+  const playPause = ref(true)
+  const volume = ref(1)
 
   return {
     isPlaying,
@@ -14,5 +14,5 @@ export const useVideoStore = defineStore("video", () => {
     play,
     playPause,
     volume,
-  };
-});
+  }
+})

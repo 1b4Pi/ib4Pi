@@ -1,8 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fFf">
-    <q-drawer v-model="drawer" show-if-above bordered side="right">
-      <drawer-tabs />
-    </q-drawer>
+  <q-layout view="hhh lpR fff">
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -10,28 +7,26 @@
 </template>
 
 <script setup>
-import { onBeforeMount, onMounted } from "vue";
-import { storeToRefs } from "pinia";
-import { useAppStore } from "src/stores/app";
-import DrawerTabs from "src/components/drawer/DrawerTabs.vue";
+import { onBeforeMount, onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useAppStore } from 'src/stores/app'
 
-defineOptions({ name: "MainLayout" });
+defineOptions({ name: 'MainLayout' })
 
-const appStore = useAppStore();
-const { drawer, userInteracted } = storeToRefs(appStore);
+const appStore = useAppStore()
+const { userInteracted } = storeToRefs(appStore)
 
 const handleUserInteraction = () => {
-  userInteracted.value = true;
-};
+  userInteracted.value = true
+}
 
 onBeforeMount(() => {
-  document.removeEventListener("click", handleUserInteraction);
-  document.removeEventListener("touchstart", handleUserInteraction);
-});
+  document.removeEventListener('click', handleUserInteraction)
+  document.removeEventListener('touchstart', handleUserInteraction)
+})
 
 onMounted(() => {
-  document.addEventListener("click", handleUserInteraction);
-  document.addEventListener("touchstart", handleUserInteraction);
-});
-
+  document.addEventListener('click', handleUserInteraction)
+  document.addEventListener('touchstart', handleUserInteraction)
+})
 </script>
