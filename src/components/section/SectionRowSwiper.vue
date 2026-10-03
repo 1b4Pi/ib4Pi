@@ -16,6 +16,24 @@
         <image-component v-if="slide.type === 'image'" crop :image="slide.image" :width="width" />
         <video-component v-else :src="slide.videoUrl" />
       </swiper-slide>
+      <q-btn
+        v-if="active"
+        class="absolute-left z-top"
+        color="primary"
+        icon="chevron_left"
+        flat
+        :size="$q.screen.gt.sm ? 'lg' : 'md'"
+        @click="previousSlide"
+      />
+      <q-btn
+        v-if="active"
+        class="absolute-right z-top"
+        color="primary"
+        icon="chevron_right"
+        flat
+        :size="$q.screen.gt.sm ? 'lg' : 'md'"
+        @click="nextSlide"
+      />
     </swiper-container>
   </div>
 </template>
@@ -47,11 +65,11 @@ const style = computed(() => {
 })
 
 const params = {
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-    waitForTransition: false,
-  },
+  // autoplay: {
+  //   delay: 3000,
+  //   disableOnInteraction: true,
+  //   waitForTransition: false,
+  // },
   centeredSlides: true,
   effect: 'fade',
   fadeEffect: {
@@ -70,42 +88,54 @@ const params = {
   spaceBetween: 0,
 }
 
+const previousSlide = () => {
+  if (!swiper.value?.swiper) return
+
+  swiper.value.swiper.slidePrev()
+}
+
+const nextSlide = () => {
+  if (!swiper.value?.swiper) return
+
+  swiper.value.swiper.slideNext()
+}
+
 onMounted(() => {
   Object.assign(swiper.value, params)
   nextTick(() => {
     if (swiper.value) {
       swiper.value.initialize()
-      if (props.active) {
-        swiper.value.swiper.autoplay.start()
-      } else {
-        swiper.value.swiper.autoplay.stop()
-      }
+      // if (props.active) {
+      //   swiper.value.swiper.autoplay.start()
+      // } else {
+      //   swiper.value.swiper.autoplay.stop()
+      // }
     }
   })
 })
 
-watch(
-  () => props.active,
-  async (active) => {
-    if (!swiper.value) return
-    if (active) {
-      swiper.value.swiper.autoplay.start()
-    } else {
-      swiper.value.swiper.autoplay.stop()
-    }
-  },
-)
+// watch(
+//   () => props.active,
+//   async (active) => {
+//     if (!swiper.value) return
+//     if (active) {
+//       swiper.value.swiper.autoplay.start()
+//     } else {
+//       swiper.value.swiper.autoplay.stop()
+//     }
+//   },
+// )
 
-watch(
-  () => props.hover,
-  async (hover) => {
-    if ($q.platform.is.mobile) return
-    if (!swiper.value) return
-    if (hover) {
-      swiper.value.swiper.autoplay.start()
-    } else {
-      swiper.value.swiper.autoplay.stop()
-    }
-  },
-)
+// watch(
+//   () => props.hover,
+//   async (hover) => {
+//     if ($q.platform.is.mobile) return
+//     if (!swiper.value) return
+//     if (hover) {
+//       swiper.value.swiper.autoplay.start()
+//     } else {
+//       swiper.value.swiper.autoplay.stop()
+//     }
+//   },
+// )
 </script>
