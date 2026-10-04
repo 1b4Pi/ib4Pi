@@ -3,7 +3,7 @@
     class="backdrop-blur backdrop-dimmed q-mb-xs cursor-pointer"
     color="primary"
     :icon="muted ? symSharpVolumeMute : symSharpVolumeUp"
-    :size="$q.screen.gt.sm ? 'md' : 'sm'"
+    size="md"
     round
     unelevated
     @click="onClick()"

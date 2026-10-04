@@ -1,5 +1,4 @@
 <template>
-  <!-- <div class="flex flex-center"> -->
   <div class="absolute-full relative-position">
     <section-row-video-wrapper
       v-if="section.project.media[0].videoUrl"
@@ -10,20 +9,13 @@
       :width="width"
     />
     <section-row-swiper
-      v-else-if="!$q.platform.is.mobile"
+      v-else
       :active="active"
       :class="active ? 'absolute-top' : 'absolute-center'"
       :hover="hover"
       :media="section.project.media"
       :ratio="section.project.ratio || 16 / 9"
       :width="width"
-    />
-    <image-component
-      v-else
-      :class="active ? 'absolute-top' : 'absolute-center'"
-      :crop="false"
-      :image="section.project.media[0].image"
-      :ratio="section.project.ratio || 16 / 9"
     />
   </div>
 </template>

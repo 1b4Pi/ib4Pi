@@ -22,7 +22,7 @@
         color="primary"
         icon="chevron_left"
         flat
-        :size="$q.screen.gt.sm ? 'lg' : 'md'"
+        :size="$q.screen.gt.sm ? 'lg' : 'xl'"
         @click="previousSlide"
       />
       <q-btn
@@ -31,7 +31,7 @@
         color="primary"
         icon="chevron_right"
         flat
-        :size="$q.screen.gt.sm ? 'lg' : 'md'"
+        :size="$q.screen.gt.sm ? 'lg' : 'xl'"
         @click="nextSlide"
       />
     </swiper-container>
@@ -39,7 +39,7 @@
 </template>
 
 <script setup>
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, ref } from 'vue'
 import { useQuasar } from 'quasar'
 import { Autoplay, EffectFade } from 'src/boot/swiper'
 import ImageComponent from 'src/components/image/ImageComponent.vue'
@@ -65,11 +65,6 @@ const style = computed(() => {
 })
 
 const params = {
-  // autoplay: {
-  //   delay: 3000,
-  //   disableOnInteraction: true,
-  //   waitForTransition: false,
-  // },
   centeredSlides: true,
   effect: 'fade',
   fadeEffect: {
@@ -105,37 +100,7 @@ onMounted(() => {
   nextTick(() => {
     if (swiper.value) {
       swiper.value.initialize()
-      // if (props.active) {
-      //   swiper.value.swiper.autoplay.start()
-      // } else {
-      //   swiper.value.swiper.autoplay.stop()
-      // }
     }
   })
 })
-
-// watch(
-//   () => props.active,
-//   async (active) => {
-//     if (!swiper.value) return
-//     if (active) {
-//       swiper.value.swiper.autoplay.start()
-//     } else {
-//       swiper.value.swiper.autoplay.stop()
-//     }
-//   },
-// )
-
-// watch(
-//   () => props.hover,
-//   async (hover) => {
-//     if ($q.platform.is.mobile) return
-//     if (!swiper.value) return
-//     if (hover) {
-//       swiper.value.swiper.autoplay.start()
-//     } else {
-//       swiper.value.swiper.autoplay.stop()
-//     }
-//   },
-// )
 </script>

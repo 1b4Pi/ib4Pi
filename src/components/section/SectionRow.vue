@@ -1,5 +1,9 @@
 <template>
-  <div :id="section.slug.current" @mouseenter="hover = true" @mouseleave="hover = false">
+  <div
+    :id="section.slug.current"
+    @mouseenter="$q.platform.is.mobile ? null : (hover = true)"
+    @mouseleave="$q.platform.is.mobile ? null : (hover = false)"
+  >
     <router-link
       class="no-text-underline"
       :class="{ 'no-cursor-pointer': active }"
@@ -29,7 +33,6 @@
             active ? `items-start ${$q.screen.lt.md ? 'q-py-lg' : 'q-py-xl'}` : 'items-center',
           ]"
           class="absolute-full justify-between row z-top overflow-visible"
-          ref="labelRef"
         >
           <section-row-label
             :active="active"

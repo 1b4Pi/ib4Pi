@@ -15,7 +15,7 @@
       @loaded="(player) => onLoaded(player)"
       @updated="(player) => onUpdated(player)"
     />
-    <div v-if="active" class="absolute-bottom full-width flex justify-between q-pa-sm">
+    <div v-if="active" class="absolute-bottom full-width flex justify-between q-px-md q-py-sm">
       <video-restart-btn @restart="videoRestart = !videoRestart" />
       <video-mute-btn />
     </div>
