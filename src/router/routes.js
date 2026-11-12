@@ -15,6 +15,18 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/video/:slug',
+    component: () => import('layouts/VideoLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'video',
+        component: () => import('pages/VideoPage.vue'),
+        props: true,
+      },
+    ],
+  },
   // Always leave this as last one,
   // but you can also remove it
   {

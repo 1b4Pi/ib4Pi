@@ -142,11 +142,11 @@ export default defineConfig((ctx) => {
     framework: {
       config: {
         dark: true,
-        loadingBar: {
-          color: 'primary',
-          position: 'bottom',
-          size: '6px',
-        },
+        // loadingBar: {
+        //   color: 'primary',
+        //   position: 'bottom',
+        //   size: '6px',
+        // },
         notify: {
           color: 'primary',
           position: 'center',
@@ -167,7 +167,12 @@ export default defineConfig((ctx) => {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Dialog', 'LoadingBar', 'Meta', 'Notify'],
+      plugins: [
+        'Dialog',
+        //'LoadingBar',
+        'Meta',
+        'Notify',
+      ],
     },
 
     // animations: 'all', // --- includes all animations
