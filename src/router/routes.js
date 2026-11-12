@@ -27,6 +27,18 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/docs/:slug',
+    component: () => import('layouts/DocsLayout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'docs',
+        component: () => import('pages/DocsPage.vue'),
+        props: true,
+      },
+    ],
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
